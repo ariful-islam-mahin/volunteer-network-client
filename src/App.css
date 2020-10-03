@@ -1,3 +1,8 @@
+.volunteer:hover{
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+  cursor: pointer;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
