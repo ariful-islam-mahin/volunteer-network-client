@@ -5,11 +5,14 @@ import {
     Route,
     Link
   } from "react-router-dom";
-import HomePage from '../HomePage/HomePage';
+import Task from '../Task/Task';
 import Login from '../Login/Login';
 import NoMatch from '../NoMatch/NoMatch';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import Register from '../Register/Register';
+import RegisteredActivities from '../RegisteredActivities/RegisteredActivities';
+import Navbar from '../Navbar/Navbar';
+
 
 export const UserContext = createContext()
 
@@ -18,14 +21,16 @@ const Main = () => {
     const [loggedInUser, setLoggedInUser] = useState({
         name:'',
         email:''
-    })
+    });
+    const [registerData, setRegisterData] = useState({})
 
     return (
-        <UserContext.Provider value={[volunteerData, setVolunteerData, loggedInUser, setLoggedInUser]}>
+        <UserContext.Provider value={[volunteerData, setVolunteerData, loggedInUser, setLoggedInUser, registerData, setRegisterData]}>
             <Router>
+                <Navbar/>
                 <Switch>
                     <Route path='/home'>
-                        <HomePage/>
+                        <Task/>
                     </Route>
                     <Route path='/login'>
                         <Login/>
@@ -33,8 +38,11 @@ const Main = () => {
                     <PrivateRoute path='/register'>
                         <Register/>
                     </PrivateRoute>
+                    <Route path="/registeredActivities">
+                        <RegisteredActivities/>
+                    </Route>
                     <Route exact path='/'>
-                        <HomePage/>
+                        <Task/>
                     </Route>
                     <Route path='*'>
                         <NoMatch/>

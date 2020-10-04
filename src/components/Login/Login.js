@@ -25,6 +25,7 @@ const Login = () => {
                 email:user.email
             }
             setLoggedInUser(userInfo);
+            storeAuthToken();
             history.replace(from);
         })
         .catch(error => {
@@ -32,11 +33,21 @@ const Login = () => {
         });
     }
 
+    const storeAuthToken = () => {
+        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+        .then(idToken => {
+            sessionStorage.setItem('token', idToken)
+        })
+        .catch(error => {
+        // Handle error
+        });
+    }
+
     return (
-        <div style={{width:'400px'}} className=' mx-auto text-center p-5 border border-secondary rounded mt-5'>
+        <div style={{width:'400px'}} className=' mx-auto text-center p-5 border border-secondary rounded mt-5 bg-white'>
             <h4 className='font-weight-bold'>Login With</h4>
             <button onClick={googleSignIn} className='border rounded-pill mt-4 row d-flex justify-content-between align-items-center py-2 btn'>
-                <img className='w-100 col-2 pl-0' src="https://lh3.googleusercontent.com/proxy/wRlmOgj9GDhQFF7PH64q6fhCtpt5NP4BRXCOqmSBsysyCeZks1j5mfjVj1bg5yHNRvgeRON1ZzJzhLjAuS9B6bQHL_pYJ9PcRNXuXuSAcqzdE_jk_PA" alt=""/>
+                <img className='w-100 col-2 pl-0' src="https://lh3.googleusercontent.com/proxy/zaSZHNm78ByNDIruUAEeN1Ya8MmG56X61xpX7Ch5NzYfcNnxUq9F88Npt_cYXszUk79xfRGWN3DLofbPPIEUg7O8nN00lr4caX4-ep-8mw3R9wMR8K0" alt=""/>
                 <h6 className="col-10 m-0">Continue with Google</h6>
             </button>
         </div>

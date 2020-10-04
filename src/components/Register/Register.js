@@ -1,9 +1,11 @@
 import { Button, TextField } from '@material-ui/core';
 import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { UserContext } from '../Main/Main';
 
 const Register = () => {
-    const [volunteerData, setVolunteerData, loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [volunteerData, setVolunteerData, loggedInUser, setLoggedInUser, registerData, setRegisterData] = useContext(UserContext);
+    const history = useHistory()
 
     const today = new Date();
     today.setDate(today.getDate());
@@ -11,25 +13,38 @@ const Register = () => {
 
     const [date, setDate] = useState(newDate);
 
-    const handleTitleChange = event => setDate(event.target.value);
+    const handleDateChange = event => setDate(event.target.value);
 
     const handleSubmit = (event) => {
-            // for (let i = 0; i < 5; i++) {
-            //     const name = event.target.elements[i].value;
-            //     console.log(name)
-            // }
-            // name : event.target.elements.name.value,
-            // email : event.target.elements.email.value,
-            // number : event.target.elements.number.value,
-            // time : event.target.elements.time.value,
-            // date : event.target.elements.date.value,
-            // doctor: doctorDetail.title
-        
+        const registerData = {
+            name : event.target.elements.name.value,
+            email : event.target.elements.email.value,
+            date : event.target.elements.date.value,
+            description : event.target.elements.description.value,
+            activity : event.target.elements.activity.value,
+            picture : volunteerData.picture
+        };
+
+        fetch('http://localhost:5000/register', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(registerData)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data){
+                history.push('/registeredActivities')
+            }
+            
+            
+        })
+
+        event.preventDefault();
     }
     
 
     return (
-        <div style={{width:'400px'}} className=' mx-auto text-center p-5 border border-secondary rounded mt-5'>
+        <div style={{width:'400px'}} className=' mx-auto text-center p-5 bg-white border border-secondary rounded mt-5'>
             <h4 className='font-weight-bold mb-4'>Register as a Volunteer</h4>
             <form onSubmit={handleSubmit}>
                 <TextField 
@@ -61,7 +76,7 @@ const Register = () => {
                     name="date" 
                     type="date" 
                     defaultValue={date}
-                    onChange={handleTitleChange}
+                    onChange= {handleDateChange}
                     id="date" 
                     size="small" 
                     placeholder="Your Email"
@@ -92,7 +107,7 @@ const Register = () => {
                     required
                 />
 
-                <Button onClick={handleSubmit} className="w-100 my-2"   variant="contained" color="primary">Registration</Button>
+                <Button type="submit" className="w-100 my-2"   variant="contained" color="primary">Registration</Button>
             </form>
             
         </div>
