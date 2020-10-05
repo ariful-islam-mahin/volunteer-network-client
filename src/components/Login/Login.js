@@ -21,6 +21,7 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             const userInfo = {
+                isLoggedIn:true,
                 name:user.displayName,
                 email:user.email
             }

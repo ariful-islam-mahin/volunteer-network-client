@@ -18,10 +18,7 @@ export const UserContext = createContext()
 
 const Main = () => {
     const [volunteerData, setVolunteerData] = useState({});
-    const [loggedInUser, setLoggedInUser] = useState({
-        name:'',
-        email:''
-    });
+    const [loggedInUser, setLoggedInUser] = useState({});
     const [registerData, setRegisterData] = useState({})
 
     return (
