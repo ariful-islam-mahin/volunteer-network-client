@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../Main/Main';
 
-const UserActivities = () => {
+const VolunteerActivities = () => {
     const [volunteerData, setVolunteerData, loggedInUser] = useContext(UserContext);
 
     const [allUserRegister, setAllUserRegister] = useState([])
@@ -46,4 +46,4 @@ const UserActivities = () => {
     );
 };
 
-export default UserActivities;
+export default VolunteerActivities;

@@ -33,7 +33,7 @@ const Register = () => {
         .then(res => res.json())
         .then(data => {
             if(data){
-                history.push('/userActivities')
+                history.push('/volunteerActivities')
             }
             
             

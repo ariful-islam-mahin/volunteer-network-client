@@ -10,9 +10,10 @@ import Login from '../Login/Login';
 import NoMatch from '../NoMatch/NoMatch';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import Register from '../Register/Register';
-import UserActivities from '../UserActivities/UserActivities';
+import VolunteerActivities from '../VolunteerActivities/VolunteerActivities';
 import Navbar from '../Navbar/Navbar';
-import Admin from '../Admin/Admin';
+import RegisterList from '../Admin/RegisterList';
+import AddEvent from '../Admin/AddEvent';
 
 
 export const UserContext = createContext()
@@ -36,11 +37,14 @@ const Main = () => {
                     <PrivateRoute path='/register'>
                         <Register/>
                     </PrivateRoute>
-                    <Route path="/userActivities">
-                        <UserActivities/>
+                    <Route path="/volunteerActivities">
+                        <VolunteerActivities/>
                     </Route>
-                    <Route path="/admin">
-                        <Admin/>
+                    <Route path="/registerList">
+                        <RegisterList/>
+                    </Route>
+                    <Route path="/addEvent">
+                        <AddEvent/>
                     </Route>
                     <Route exact path='/'>
                         <Task/>
