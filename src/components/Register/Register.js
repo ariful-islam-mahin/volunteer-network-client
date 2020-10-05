@@ -33,7 +33,7 @@ const Register = () => {
         .then(res => res.json())
         .then(data => {
             if(data){
-                history.push('/registeredActivities')
+                history.push('/userActivities')
             }
             
             
@@ -41,8 +41,6 @@ const Register = () => {
 
         event.preventDefault();
     }
-    
-
     return (
         <div style={{width:'400px'}} className=' mx-auto text-center p-5 bg-white border border-secondary rounded mt-5'>
             <h4 className='font-weight-bold mb-4'>Register as a Volunteer</h4>

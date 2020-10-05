@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../Main/Main';
 
-const RegisteredActivities = () => {
+const UserActivities = () => {
     const [volunteerData, setVolunteerData, loggedInUser] = useContext(UserContext);
 
-    const [allRegister, setAllRegister] = useState([])
+    const [allUserRegister, setAllUserRegister] = useState([])
 
     fetch('https://stormy-atoll-89779.herokuapp.com/allRegister?email='+loggedInUser.email, {
         method: 'GET',
@@ -14,7 +14,7 @@ const RegisteredActivities = () => {
         }
     })
     .then(res => res.json())
-    .then(data => setAllRegister(data))
+    .then(data => setAllUserRegister(data))
 
     const deleteActivity = (id) => {
         fetch(`https://stormy-atoll-89779.herokuapp.com/deleteActivity/${id}`, {
@@ -29,7 +29,7 @@ const RegisteredActivities = () => {
     return (
         <div className="row container mx-auto">
             {
-               allRegister.map(data => 
+               allUserRegister.map(data => 
                     <div key={data._id} className="col-md-6 mt-3">
                         <div className="border border-secondary rounded d-flex py-2 bg-white">
                             <img className="w-100 col-5 pl-2" src={data.picture} alt=""/>
@@ -46,4 +46,4 @@ const RegisteredActivities = () => {
     );
 };
 
-export default RegisteredActivities;
+export default UserActivities;
