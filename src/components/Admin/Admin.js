@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 const Admin = () => {
     const [allRegister, setAllRegister] = useState([]);
-    const [isDeleted, setIsDeleted] = useState(false);
 
     useEffect(() => {
         fetch('https://stormy-atoll-89779.herokuapp.com/allRegistedActivity')
@@ -18,9 +17,10 @@ const Admin = () => {
         })
         .then(res => res.json())
         .then(data => {
+            
             console.log('deleted successfully')
         })
-        setIsDeleted(true);
+        window.location.reload();
     }
     return (
         <div className='container mt-5'>
@@ -37,7 +37,7 @@ const Admin = () => {
                 <tbody className="bg-white">
                     {
                         allRegister.map(data => 
-                                <tr style={{textDecorationLine: isDeleted ? 'line-through' : 'none'}} key={data._id}>
+                                <tr key={data._id}>
                                     <td>{data.name}</td>
                                     <td>{data.email}</td>
                                     <td>{data.date}</td>
