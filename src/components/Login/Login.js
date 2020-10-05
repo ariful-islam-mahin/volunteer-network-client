@@ -47,7 +47,7 @@ const Login = () => {
         <div style={{width:'400px'}} className=' mx-auto text-center p-5 border border-secondary rounded mt-5 bg-white'>
             <h4 className='font-weight-bold'>Login With</h4>
             <button onClick={googleSignIn} className='border rounded-pill mt-4 row d-flex justify-content-between align-items-center py-2 btn'>
-                <img className='w-100 col-2 pl-0' src="https://lh3.googleusercontent.com/proxy/zaSZHNm78ByNDIruUAEeN1Ya8MmG56X61xpX7Ch5NzYfcNnxUq9F88Npt_cYXszUk79xfRGWN3DLofbPPIEUg7O8nN00lr4caX4-ep-8mw3R9wMR8K0" alt=""/>
+                <img className='w-100 col-2 pl-0' src="https://i.ibb.co/pZbCcqY/1004px-Google-G-Logo-svg.png" alt=""/>
                 <h6 className="col-10 m-0">Continue with Google</h6>
             </button>
         </div>
