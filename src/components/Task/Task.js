@@ -10,7 +10,7 @@ const HomePage = () => {
     const history  = useHistory()
 
     useEffect(() => {
-        fetch('http://localhost:5000/activities')
+        fetch('https://stormy-atoll-89779.herokuapp.com/activities')
         .then(res => res.json())
         .then(data => setActivities(data))
     }, []);
@@ -21,7 +21,7 @@ const HomePage = () => {
     }
 
     // const handleAddActivities = () => {
-    //         fetch('http://localhost:5000/addActivities', {
+    //         fetch('https://stormy-atoll-89779.herokuapp.com/addActivities', {
     //             method: 'POST',
     //             headers:{
     //                 'Content-Type': 'application/json'

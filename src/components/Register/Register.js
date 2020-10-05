@@ -25,7 +25,7 @@ const Register = () => {
             picture : volunteerData.picture
         };
 
-        fetch('http://localhost:5000/register', {
+        fetch('https://stormy-atoll-89779.herokuapp.com/register', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(registerData)

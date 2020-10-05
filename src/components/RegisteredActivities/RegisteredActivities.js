@@ -6,7 +6,7 @@ const RegisteredActivities = () => {
 
     const [allRegister, setAllRegister] = useState([])
 
-    fetch('http://localhost:5000/allRegister?email='+loggedInUser.email, {
+    fetch('https://stormy-atoll-89779.herokuapp.com/allRegister?email='+loggedInUser.email, {
         method: 'GET',
         headers: { 
             'Content-Type': 'application/json',
@@ -17,7 +17,7 @@ const RegisteredActivities = () => {
     .then(data => setAllRegister(data))
 
     const deleteActivity = (id) => {
-        fetch(`http://localhost:5000/deleteActivity/${id}`, {
+        fetch(`https://stormy-atoll-89779.herokuapp.com/deleteActivity/${id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())
