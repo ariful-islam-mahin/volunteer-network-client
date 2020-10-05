@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 const Admin = () => {
-    const [allRegister, setAllRegister] = useState([])
+    const [allRegister, setAllRegister] = useState([]);
+    const [isDeleted, setIsDeleted] = useState(false);
 
     useEffect(() => {
         fetch('https://stormy-atoll-89779.herokuapp.com/allRegistedActivity')
@@ -9,7 +10,18 @@ const Admin = () => {
         .then(data  => {
             setAllRegister(data)
         })
-    }, [])
+    }, []);
+
+    const deleteActivity = (id) => {
+        fetch(`https://stormy-atoll-89779.herokuapp.com/deleteActivity/${id}`, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log('deleted successfully')
+        })
+        setIsDeleted(true);
+    }
     return (
         <div className='container mt-5'>
             <table className="table">
@@ -19,16 +31,18 @@ const Admin = () => {
                 <th scope="col">Email</th>
                 <th scope="col">Registating date</th>
                 <th scope="col">Volunteer list</th>
+                <th scope="col">Action</th>
                 </tr>
             </thead>
-                <tbody>
+                <tbody className="bg-white">
                     {
                         allRegister.map(data => 
-                                <tr key={data._id}>
+                                <tr style={{textDecorationLine: isDeleted ? 'line-through' : 'none'}} key={data._id}>
                                     <td>{data.name}</td>
                                     <td>{data.email}</td>
                                     <td>{data.date}</td>
                                     <td>{data.activity}</td>
+                                    <td><button className="btn btn-danger" onClick={() => deleteActivity(data._id)}>delete</button></td>
                                 </tr> 
                         )
                     }
