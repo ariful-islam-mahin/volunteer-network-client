@@ -10,7 +10,7 @@ const HomePage = () => {
     const history  = useHistory()
 
     useEffect(() => {
-        fetch('https://stormy-atoll-89779.herokuapp.com/activities')
+        fetch('https://stormy-atoll-89779.herokuapp.com/allActivities')
         .then(res => res.json())
         .then(data => setActivities(data))
     }, []);

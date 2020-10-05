@@ -16,11 +16,12 @@ const Admin = () => {
             method: 'DELETE'
         })
         .then(res => res.json())
-        .then(data => {
-            
-            console.log('deleted successfully')
+        .then(result => {
+            if(result){
+                window.location.reload();
+            }
         })
-        window.location.reload();
+        
     }
     return (
         <div className='container mt-5'>
