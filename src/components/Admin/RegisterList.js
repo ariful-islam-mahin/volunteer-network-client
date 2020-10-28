@@ -12,9 +12,9 @@ const RegisterList = () => {
         })
     }, []);
 
-    const deleteActivity = (id) => {
+    function deleteActivity(id){
         fetch(`https://stormy-atoll-89779.herokuapp.com/deleteActivity/${id}`, {
-            method: 'DELETE'
+        method: 'DELETE'
         })
         .then(res => res.json())
         .then(result => {
@@ -22,8 +22,8 @@ const RegisterList = () => {
                 window.location.reload();
             }
         })
-        
-    }
+    }    
+    
     return (
         <div className='container mt-5 d-flex row mx-auto'>
             <div className='col-md-3'>

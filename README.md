@@ -1,3 +1,18 @@
+# Volunteer Network
+
+This project is full stack project. In home page have some volunteer activities. In register page have a form for register as a volunteer. When registed have been successfull then go to volunteer activities page. This project have admin panel. In admin page have 2 options. volunteer register list and add event.
+
+###### Features :
+* User can join as a volunteer to select a volunteer opportunity.
+* User can see their all active volunteer.
+* Admin can see all the volunteer lists.
+* Admin also can removes any volunteer.
+* Admin able to add volunteer opportunities.
+
+###### Technology : 
+JavaScript, React, React-Router, NodeJS, ExpressJS, MongoDB, 
+Firebase Authentication, Heroku
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
